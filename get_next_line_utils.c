@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:51:42 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/03 22:52:15 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/09 16:26:37 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strdup(char *s)
 	return (pa);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *stash, char const *buf)
 {
 	int		i;
 	int		j;
@@ -52,22 +52,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	line = (char *)malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (stash == NULL)
+		return (ft_strdup((char *)buf)); //STASH FLWL KIJI NULL NREJEE LCONTENU D S2 F STASH, bash ihet dakshy dial s2 f stash
+	line = (char *)malloc (sizeof(char) * (ft_strlen(stash) + ft_strlen(buf) + 1));
 	if (line == NULL)
 		return (NULL);
-	while (s1[i])
+	while (stash[i])
 	{
-		line[i] = s1[i];
+		line[i] = stash[i];
 		i++;
 	}
-	while (s2[j])
+	while (buf[j])
 	{
-		line[i + j] = s2[j];
+		line[i + j] = buf[j];
 		j++;
 	}
 	line[i + j] = '\0';
+	free((char *) stash); //STASH LMERA TANYA M ALLOKER W KHASNNI NHET FIH DATA JDIDA NFREEYER STASH LQDIM
 	return (line);
 }
 
@@ -75,12 +76,10 @@ char	*extraction(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
-	// size_t	r;
 
 	if (s == NULL)
 		return (NULL);
 	i = 0;
-	// r = ft_strlen(s);
 	str = (char *) malloc (sizeof(*s) * (len + 1));
 	if (!str)
 		return (NULL);
@@ -92,4 +91,3 @@ char	*extraction(char const *s, unsigned int start, size_t len)
 	str[len] = '\0';
 	return (str);
 }
-
