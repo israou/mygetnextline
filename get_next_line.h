@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:48:28 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/09 14:33:25 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/09 21:02:26 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-#include<libc.h>
+# include <libc.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
-int	checknewline(char *s);
+int		checknewline(char *s);
 char	*extraction(char const *s, unsigned int start, size_t len);
 char	*divising(char *s, char **reste);
-void	free_(char **s);
 #endif
