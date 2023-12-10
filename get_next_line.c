@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:47:31 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/10 20:09:48 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/10 21:10:56 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ char	*get_next_line(int fd)
 	ssize_t		readd; //resulat de read
 	static char	*stash; //apres buf
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1) //verification de la validite de fd; si <1 ou depasse la limite max
-		return (NULL);
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || BUFFER_SIZE >= INT_MAX) //verification de la validite de fd; si <1 ou depasse la limite max
+		return (NULL); //ela qbel +1 bash mayoverflowish
 	buf = malloc(BUFFER_SIZE + 1);
 	while (BUFFER_SIZE > 0)
 	{
