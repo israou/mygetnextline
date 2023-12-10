@@ -6,16 +6,16 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:48:28 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/09 21:02:26 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/10 01:49:31 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
-#endif
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE
+# endif
 
 # include <unistd.h>
 # include <stddef.h>

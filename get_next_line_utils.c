@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:51:42 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/09 21:02:37 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/10 00:16:51 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlen(const char *s)
 	i = 0;
 	if (!s)
 		return (0);
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -31,7 +31,7 @@ char	*ft_strdup(char *s)
 	char	*pa;
 
 	i = 0;
-	len= ft_strlen(s);
+	len = ft_strlen(s);
 	pa = (char *)malloc(sizeof(char) * (len + 1));
 	if (!pa)
 		return (NULL);

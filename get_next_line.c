@@ -6,13 +6,13 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:47:31 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/09 22:41:45 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/10 00:18:10 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		checknewline(char *s)
+int	checknewline(char *s)
 {
 	int	i;
 
@@ -30,19 +30,24 @@ char	*divising(char *s, char **reste)
 	char	*line;
 	char	*tmp;
 	int		newindex;
+
 	if (!s)
 		return (NULL);
 	if (*reste && **reste == '\0')
-		return (free(*reste), NULL); //F HALAT MABQA F LRESTE WALOU BASH NHBES LOOP DIAL LMAIN
+	{
+		free(*reste);
+		*reste = NULL;
+		return (NULL);
+	}
+	//F HALAT MABQA F LRESTE WALOU BASH NHBES LOOP DIAL LMAIN
 	newindex = checknewline(s);
-	// printf("haitam" "%s\n", s);
 	if (newindex == -1)
 	{
-		line = ft_strjoin(s, "\n");
+		line = ft_strdup(s);
+		free(*reste);
 		*reste = ft_strdup("\0");
 		return (line);
 	}
-
 	tmp = s; //sauvegarde de l'adresse de la chaine d'origine
 	line = extraction(s, 0, newindex + 1);//extraction de la sous chaine du debut jusqu'au '\n'
 	*reste = extraction(s, newindex + 1, ft_strlen(s + newindex)); //extraction de la chaine restante apres le '\n' ignorer lign li deja khdit
@@ -52,8 +57,8 @@ char	*divising(char *s, char **reste)
 
 char	*get_next_line(int fd)
 {
-	ssize_t		readd; //resulat de read
 	char		buf[BUFFER_SIZE + 1];
+	ssize_t		readd; //resulat de read
 	static char	*stash; //apres buf
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1) //verification de la validite de fd; si <1 ou depasse la limite max
@@ -65,7 +70,7 @@ char	*get_next_line(int fd)
 			return (divising(stash, &stash));
 		else if (readd == -1)
 		{
-			free(&stash);
+			free(stash);
 			stash = NULL;
 			return (NULL);
 		}
@@ -80,6 +85,8 @@ char	*get_next_line(int fd)
 // {
 // 	int fd = open("iss.txt", O_RDWR);
 // 	char *line = get_next_line(fd);
+// 	printf("%s", line);
+// 	line = get_next_line(fd);
 // 	printf("%s", line);
 // 	free (line);
 // }
