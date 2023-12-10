@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:47:31 by ichaabi           #+#    #+#             */
-/*   Updated: 2023/12/10 21:10:56 by ichaabi          ###   ########.fr       */
+/*   Updated: 2023/12/10 21:23:45 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ char	*divising(char *s, char **reste)
 #include <limits.h>
 char	*get_next_line(int fd)
 {
-	write(1, "aa\n", 3);
 	char		*buf;
 	ssize_t		readd; //resulat de read
 	static char	*stash; //apres buf
